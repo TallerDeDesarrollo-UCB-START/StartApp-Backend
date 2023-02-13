@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const EVENT_TABLE = 'products';
+const EVENT_TABLE = 'events';
 
 const EventSchema = {
   id: {
@@ -32,18 +32,17 @@ const EventSchema = {
   leaderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  },
-  status: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    field: "leader_id"
   },
   startTime: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "start_time"
   },
   endTime: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "end_time"
   },
 }
 

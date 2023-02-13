@@ -1,0 +1,6 @@
+INSERT INTO events(name, description, mode, location, date, leader_id, start_time, end_time)
+VALUES ('Perritos en Adopción 1', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 2', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 3', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 4', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 5', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z')

@@ -18,8 +18,8 @@ class EventsService {
       options.limit =  limit;
       options.offset =  offset;
     }
-    const products = await models.Event.findAll(options);
-    return products;
+    const events = await models.Event.findAll(options);
+    return events;
   }
 
   async findOne(id) {
