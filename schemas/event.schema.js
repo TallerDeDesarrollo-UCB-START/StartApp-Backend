@@ -6,10 +6,7 @@ const description = Joi.string().min(10).max(200);
 const mode = Joi.string();
 const location = Joi.string().max(50);
 const date = Joi.string();
-const projectId = Joi.number().integer();
-const categoryId = Joi.number().integer();
 const leaderId = Joi.number().integer();
-const status = Joi.string();
 const startTime = Joi.string();
 const endTime = Joi.string();
 
@@ -22,10 +19,7 @@ const createEventSchema = Joi.object({
   mode: mode.required(),
   location: location.required(),
   date: date.required(),
-  projectId: projectId.required(),
-  categoryId: categoryId.required(),
   leaderId: leaderId,
-  status: status.required(),
   startTime: startTime.required(),
   endTime: endTime.required()
 });
@@ -36,10 +30,7 @@ const updateEventSchema = Joi.object({
   mode: mode,
   location: location,
   date: date,
-  projectId: projectId,
-  categoryId: categoryId,
   leaderId: leaderId,
-  status: status,
   startTime: startTime,
   endTime: endTime,
 });
