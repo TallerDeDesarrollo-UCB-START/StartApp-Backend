@@ -9,3 +9,20 @@ CREATE TABLE events (
   start_time VARCHAR ( 50 ) NOT NULL,
   end_time VARCHAR ( 50 ) NOT NULL
 );
+
+CREATE TABLE users (
+	id serial PRIMARY KEY,
+	name VARCHAR ( 50 ) NOT NULL,
+	lastname VARCHAR ( 50 ) NOT NULL,
+	role_id INT NOT NULL,
+	volunteer_minutes INT NOT NULL,
+  birthday VARCHAR ( 50 ) NULL,
+  profession_area_id INT NULL,
+  country VARCHAR ( 50 ) NULL,
+  city VARCHAR ( 50 ) NULL,
+  phone_number VARCHAR ( 20 ) NULL,
+  emergency_contact_name VARCHAR ( 100 ) NULL,
+  emergency_contact_relationship VARCHAR ( 20 ) NULL,
+  emergency_contact_phone_number VARCHAR ( 20 ) NULL,
+  about_me VARCHAR ( 255 ) NULL
+);
