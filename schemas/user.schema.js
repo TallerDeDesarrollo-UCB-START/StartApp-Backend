@@ -22,7 +22,6 @@ const createUserSchema = Joi.object({
   name: name.required(),
   lastname: lastname.required(),
   roleId: roleId.required(),
-  //volunteerMinutes: volunteerMinutes.required(),
   birthday: birthday,
   professionAreaId: professionAreaId,
   country: country,

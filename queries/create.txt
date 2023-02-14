@@ -24,5 +24,26 @@ CREATE TABLE users (
   emergency_contact_name VARCHAR ( 100 ) NULL,
   emergency_contact_relationship VARCHAR ( 20 ) NULL,
   emergency_contact_phone_number VARCHAR ( 20 ) NULL,
-  about_me VARCHAR ( 255 ) NULL
+  about_me VARCHAR ( 255 ) NULL,
+    CONSTRAINT fk_role
+      FOREIGN KEY(role_id)
+	  REFERENCES roles(id)
+      ON UPDATE CASCADE
+	  ON DELETE SET NULL,
+    CONSTRAINT fk_profession_area
+      FOREIGN KEY(profession_area_id)
+	  REFERENCES profession_areas(id)
+      ON UPDATE CASCADE
+	  ON DELETE SET NULL
+);
+
+
+CREATE TABLE roles (
+	id serial PRIMARY KEY,
+	name VARCHAR ( 50 ) NOT NULL
+);
+
+CREATE TABLE profession_areas (
+	id serial PRIMARY KEY,
+	name VARCHAR ( 100 ) NOT NULL
 );

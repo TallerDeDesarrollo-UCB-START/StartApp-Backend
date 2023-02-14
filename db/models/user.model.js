@@ -1,4 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const { ROLE_TABLE } = require('./role.model');
+const { PROFESSION_AREA_TABLE } = require('./profession-area.model');
 
 const USER_TABLE = 'users';
 
@@ -20,7 +22,13 @@ const UserSchema = {
   roleId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: "role_id"
+    field: "role_id",
+    references: {
+      model: ROLE_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL'
   },
   volunteerMinutes: {
     type: DataTypes.INTEGER,
@@ -34,7 +42,13 @@ const UserSchema = {
   professionAreaId: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "profession_area_id"
+    field: "profession_area_id",
+    references: {
+      model: PROFESSION_AREA_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL'
   },
   country: {
     type: DataTypes.STRING,
@@ -75,7 +89,12 @@ const UserSchema = {
 class User extends Model {
 
   static associate(models) {
-    //this.belongsTo(models.Category, { as: 'category' });
+    this.belongsTo(models.Role, {
+      as: 'role'
+    });
+    this.belongsTo(models.ProfessionArea, {
+      as: 'professionArea'
+    });
   }
 
   static config(sequelize) {

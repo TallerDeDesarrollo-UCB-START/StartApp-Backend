@@ -13,27 +13,29 @@ class UsersService {
   }
 
   async find(query) {
-    const options = {}
+    const options = {
+      include: ['role', 'professionArea'],
+    }
     const { limit, offset } = query;
     if (limit && offset) {
       options.limit =  limit;
       options.offset =  offset;
     }
-    const events = await models.User.findAll(options);
-    return events;
+    const users = await models.User.findAll(options);
+    return users;
   }
 
   async findOne(id) {
-    const event = await models.User.findByPk(id);
-    if (!event) {
+    const user = await models.User.findByPk(id);
+    if (!user) {
       throw boom.notFound('User not found');
     }
-    return event;
+    return user;
   }
 
   async update(id, changes) {
-    const event = await this.findOne(id);
-    const response = await event.update(changes);
+    const user = await this.findOne(id);
+    const response = await user.update(changes);
     return response;
   }
 
