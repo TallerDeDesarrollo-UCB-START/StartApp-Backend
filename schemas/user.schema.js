@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const id = Joi.number().integer();
 const name = Joi.string();
-const lastname = Joi.string();
 const roleId = Joi.number().integer();
 const volunteerMinutes = Joi.string();
 const birthday = Joi.string();
@@ -20,7 +19,6 @@ const offset = Joi.number();
 
 const createUserSchema = Joi.object({
   name: name.required(),
-  lastname: lastname.required(),
   roleId: roleId.required(),
   birthday: birthday,
   professionAreaId: professionAreaId,
@@ -35,7 +33,6 @@ const createUserSchema = Joi.object({
 
 const updateUserSchema = Joi.object({
   name: name,
-  lastname: lastname,
   roleId: roleId,
   volunteerMinutes: volunteerMinutes,
   birthday: birthday,

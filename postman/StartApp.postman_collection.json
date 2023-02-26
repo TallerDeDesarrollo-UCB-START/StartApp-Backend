@@ -15,16 +15,27 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/events",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{environment}}/api/v1/events",
+							"protocol": "{{protocol}}",
 							"host": [
-								"localhost"
+								"{{environment}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
 								"events"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "1",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -36,12 +47,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/events/1",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{environment}}/api/v1/events/1",
+							"protocol": "{{protocol}}",
 							"host": [
-								"localhost"
+								"{{environment}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -67,12 +77,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/events/5",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{environment}}/api/v1/events/5",
+							"protocol": "{{protocol}}",
 							"host": [
-								"localhost"
+								"{{environment}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -98,12 +107,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/events",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{environment}}/api/v1/events",
+							"protocol": "{{protocol}}",
 							"host": [
-								"localhost"
+								"{{environment}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -119,12 +127,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/events/6",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{environment}}/api/v1/events/6",
+							"protocol": "{{protocol}}",
 							"host": [
-								"localhost"
+								"{{environment}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -138,8 +145,172 @@
 			]
 		},
 		{
-			"name": "Interests",
-			"item": []
+			"name": "Users",
+			"item": [
+				{
+					"name": "User list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{environment}}/api/v1/users?limit=2&offset=1",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{environment}}/api/v1/users/1",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Daniel [Updated]\",\r\n    \"lastname\": \"Oropeza [Updated]\",\r\n    \"professionAreaId\": 1,\r\n    \"country\": \"Bolivia\",\r\n    \"city\": \"Cochabamba\",\r\n    \"emergencyContactRelationship\": \"Mama \",\r\n    \"emergencyContactPhoneNumber\": \"76408797\",\r\n    \"aboutMe\": \"Soy yo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{environment}}/api/v1/users/5",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Daniel [Created]\",\r\n    \"lastname\": \"Oropeza\",\r\n    \"roleId\": 1,\r\n    \"birthday\": \"1997-12-10T00:00Z\",\r\n    \"professionAreaId\": 1,\r\n    \"country\": \"Bolivia\",\r\n    \"city\": \"Cochabamba\",\r\n    \"phoneNumber\": \"75985489\",\r\n    \"emergencyContactName\": \"Lisbet Celina Soria Vera\",\r\n    \"emergencyContactRelationship\": \"Mama\",\r\n    \"emergencyContactPhoneNumber\": \"76408797\",\r\n    \"aboutMe\": \"Soy yo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{environment}}/api/v1/users",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{environment}}/api/v1/users/4",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		},
+		{
+			"key": "environment",
+			"value": "localhost:3000",
+			"type": "string"
 		}
 	]
 }

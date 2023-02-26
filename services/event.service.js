@@ -12,7 +12,9 @@ class EventsService {
   }
 
   async find(query) {
-    const options = {}
+    const options = {
+      attributes: { exclude: ['createdAt', 'mode', 'leaderId'] },
+    }
     const { limit, offset } = query;
     if (limit && offset) {
       options.limit =  limit;
@@ -23,7 +25,25 @@ class EventsService {
   }
 
   async findOne(id) {
-    const event = await models.Event.findByPk(id);
+    const options = {
+      attributes: { exclude: ['createdAt', 'leaderId'] },
+      include: [
+        {
+          model: models.User,
+          as: 'leader',
+          attributes: ['id', 'name']
+        },
+        {
+          model: models.User,
+          as: 'participants',
+          attributes: ['id', 'name'],
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    }
+    const event = await models.Event.findByPk(id, options);
     if (!event) {
       throw boom.notFound('Event not found');
     }

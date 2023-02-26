@@ -9,6 +9,12 @@ const ProfessionAreaSchema = {
     primaryKey: true,
     type: DataTypes.INTEGER
   },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    field: 'created_at',
+    defaultValue: Sequelize.Now
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,

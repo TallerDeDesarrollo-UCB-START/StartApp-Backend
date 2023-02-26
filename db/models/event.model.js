@@ -1,5 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
+const { USER_TABLE } = require('./user.model');
+
 const EVENT_TABLE = 'events';
 
 const EventSchema = {
@@ -8,6 +10,12 @@ const EventSchema = {
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    field: 'created_at',
+    defaultValue: Sequelize.Now
   },
   name: {
     type: DataTypes.STRING,
@@ -25,14 +33,21 @@ const EventSchema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  date: {
+  scheduledDate: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: 'scheduled_date',
   },
   leaderId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    field: "leader_id"
+    allowNull: true,
+    field: "leader_id",
+    references: {
+      model: USER_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL'
   },
   startTime: {
     type: DataTypes.STRING,
@@ -50,7 +65,15 @@ const EventSchema = {
 class Event extends Model {
 
   static associate(models) {
-    //this.belongsTo(models.Category, { as: 'category' });
+    this.belongsTo(models.User, {
+      as: 'leader'
+    });
+    this.belongsToMany(models.User, {
+      as: 'participants',
+      through: models.EventUser,
+      foreignKey: 'eventId',
+      otherKey: 'userId'
+    });
   }
 
   static config(sequelize) {

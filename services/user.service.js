@@ -14,7 +14,7 @@ class UsersService {
 
   async find(query) {
     const options = {
-      include: ['role', 'professionArea'],
+      include: ['role', 'professionArea', 'myEvents'],
     }
     const { limit, offset } = query;
     if (limit && offset) {

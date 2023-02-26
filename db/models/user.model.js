@@ -11,11 +11,13 @@ const UserSchema = {
     primaryKey: true,
     type: DataTypes.INTEGER
   },
-  name: {
-    type: DataTypes.STRING,
+  createdAt: {
     allowNull: false,
+    type: DataTypes.DATE,
+    field: 'created_at',
+    defaultValue: Sequelize.Now
   },
-  lastname: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -94,6 +96,12 @@ class User extends Model {
     });
     this.belongsTo(models.ProfessionArea, {
       as: 'professionArea'
+    });
+    this.belongsToMany(models.Event, {
+      as: 'myEvents',
+      through: models.EventUser,
+      foreignKey: 'userId',
+      otherKey: 'eventId'
     });
   }
 

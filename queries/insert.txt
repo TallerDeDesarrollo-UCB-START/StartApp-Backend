@@ -1,19 +1,26 @@
-INSERT INTO events(name, description, mode, location, date, leader_id, start_time, end_time)
-VALUES ('Perritos en Adopción 1', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
-    ('Perritos en Adopción 2', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
-    ('Perritos en Adopción 3', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
-    ('Perritos en Adopción 4', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
-    ('Perritos en Adopción 5', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z')
-
-INSERT INTO users(name, lastname, role_id, volunteer_minutes, birthday, profession_area_id, country, city, phone_number, emergency_contact_name, emergency_contact_relationship, emergency_contact_phone_number, about_me)
-VALUES ('Daniel', 'Oropeza', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
-    ('Daniel', 'Oropeza', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
-    ('Daniel', 'Oropeza', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
-    ('Daniel', 'Oropeza', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
-    ('Daniel', 'Oropeza', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo')
-
 INSERT INTO roles(name)
-VALUES ('volunteer'), ('leader'), ('core')
+VALUES ('volunteer'), ('leader'), ('core');
 
 INSERT INTO profession_areas(name)
-VALUES ('Artes'), ('Ciencias Biológicas'), ('Ciencias Sociales'), ('Educación'), ('Humanidades'), ('Tecnología')
+VALUES ('Artes'), ('Ciencias Biológicas'), ('Ciencias Sociales'), ('Educación'), ('Humanidades'), ('Tecnología');
+
+INSERT INTO users(name, role_id, volunteer_minutes, birthday, profession_area_id, country, city, phone_number, emergency_contact_name, emergency_contact_relationship, emergency_contact_phone_number, about_me)
+VALUES ('Daniel', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
+    ('Daniel', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
+    ('Daniel', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
+    ('Daniel', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo'),
+    ('Daniel', 1, 360, '1997-12-10T00:00Z', 1, 'Bolivia', 'Cochabamba', '75985489', 'Lisbet Celina Soria Vera', 'Mama', '76408797', 'Soy yo');
+
+INSERT INTO events(name, description, mode, location, scheduled_date, leader_id, start_time, end_time)
+VALUES ('Perritos en Adopción 1', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 2', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', NULL, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 3', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', NULL, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 4', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 2, '2023-01-01T14:00Z', '2023-01-01T18:00Z'),
+    ('Perritos en Adopción 5', 'Ven y comparte tiempo con perritos sin hogar', 'presencial', 'Plaza Colon', '2023-02-13T00:00Z', 1, '2023-01-01T14:00Z', '2023-01-01T18:00Z');
+
+INSERT INTO events_users(event_id, user_id)
+VALUES (1,2),
+    (2,2),
+    (1,1),
+    (2,1),
+    (2,3);

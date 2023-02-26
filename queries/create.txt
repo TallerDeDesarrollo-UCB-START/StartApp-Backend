@@ -1,19 +1,19 @@
-CREATE TABLE events (
+CREATE TABLE roles (
 	id serial PRIMARY KEY,
-	name VARCHAR ( 50 ) NOT NULL,
-	description VARCHAR ( 255 ) NOT NULL,
-	mode VARCHAR ( 20 ) NOT NULL,
-	location VARCHAR ( 100 ) NOT NULL,
-  date VARCHAR ( 50 ) NOT NULL,
-  leader_id INT NOT NULL,
-  start_time VARCHAR ( 50 ) NOT NULL,
-  end_time VARCHAR ( 50 ) NOT NULL
+  created_at DATE NOT NULL DEFAULT NOW(),
+	name VARCHAR ( 50 ) NOT NULL
+);
+
+CREATE TABLE profession_areas (
+	id serial PRIMARY KEY,
+  created_at DATE NOT NULL DEFAULT NOW(),
+	name VARCHAR ( 100 ) NOT NULL
 );
 
 CREATE TABLE users (
 	id serial PRIMARY KEY,
+  created_at DATE NOT NULL DEFAULT NOW(),
 	name VARCHAR ( 50 ) NOT NULL,
-	lastname VARCHAR ( 50 ) NOT NULL,
 	role_id INT NOT NULL,
 	volunteer_minutes INT NOT NULL,
   birthday VARCHAR ( 50 ) NULL,
@@ -37,13 +37,22 @@ CREATE TABLE users (
 	  ON DELETE SET NULL
 );
 
-
-CREATE TABLE roles (
+CREATE TABLE events (
 	id serial PRIMARY KEY,
-	name VARCHAR ( 50 ) NOT NULL
+	created_at DATE NOT NULL DEFAULT NOW(),
+	name VARCHAR ( 50 ) NOT NULL,
+	description VARCHAR ( 255 ) NOT NULL,
+	mode VARCHAR ( 20 ) NOT NULL,
+	location VARCHAR ( 100 ) NOT NULL,
+  scheduled_date VARCHAR ( 50 ) NOT NULL,
+  leader_id INT NULL,
+  start_time VARCHAR ( 50 ) NOT NULL,
+  end_time VARCHAR ( 50 ) NOT NULL
 );
 
-CREATE TABLE profession_areas (
+CREATE TABLE events_users (
 	id serial PRIMARY KEY,
-	name VARCHAR ( 100 ) NOT NULL
+	created_at DATE NOT NULL DEFAULT NOW(),
+  event_id INT NOT NULL,
+  user_id INT NOT NULL
 );
